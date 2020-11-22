@@ -87,7 +87,7 @@ export default {
         const { data: res } = await this.$http.post('login', this.loginForm)
         // console.log(res);
         if (res.meta.status !== 200)
-          return this.$message({ type: 'error', message: '登录失败！' })
+          return this.$message({ type: 'error', message: res.meta.msg })
         this.$message({ type: 'success', message: '登录成功！' })
         //1、将token存储到sessionStorage中
         window.sessionStorage.setItem('token', res.data.token)
