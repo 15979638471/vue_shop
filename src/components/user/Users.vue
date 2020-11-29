@@ -240,6 +240,9 @@ export default {
   },
   methods: {
     async getUserList() {
+      const loadingInstance = this.$loading.service({
+        target: 'main'
+      })
       const { data: res } = await this.$http.get('users', {
         params: this.queryInfo,
       })
@@ -248,6 +251,7 @@ export default {
       this.userList = res.data.users
       this.total = res.data.total
       // console.log(res)
+      loadingInstance.close()
     },
     // 监听 pagesize 改变的事件
     handleSizeChange(newSize) {

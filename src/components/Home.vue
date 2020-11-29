@@ -60,7 +60,7 @@ export default {
   },
   data() {
     return {
-      // 保存左侧菜单数据】
+      // 保存左侧菜单数据
       menulist: [],
       isCollapse: false
     }
@@ -124,6 +124,7 @@ export default {
 }
 .el-main {
   background-color: #eaedf1;
+  overflow: auto;
 }
 .toggle-button {
   background-color: #4a5064;

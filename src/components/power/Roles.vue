@@ -161,15 +161,19 @@ export default {
   methods: {
     // 获取所有角色
     async getRoleList() {
+      const loadingInstance = this.$loading.service({
+        target: 'main'
+      })
       const {data: res} = await this.$http.get('roles')
 
-      // console.log(res);
+      console.log(res);
 
       if(res.meta.status !== 200)
         return this.$message.error(res.meta.msg)
 
       // this.$message.success(res.meta.msg)
       this.roleList = res.data
+      loadingInstance.close()
     },
     // 展示修改角色的对话框
     async showEditDialog(id) {

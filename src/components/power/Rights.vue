@@ -37,12 +37,16 @@ export default {
   },
   methods: {
     async getAuthList() {
+      const loadingInstance = this.$loading.service({
+        target: 'main'
+      })
       const {data: res} = await this.$http.get('rights/list')
       console.log(res);
       if(res.meta.status !== 200)
         return this.$message.error(res.meta.msg)
       this.$message.success(res.meta.msg)
       this.authList = res.data
+      loadingInstance.close()
     }
   }
 }
